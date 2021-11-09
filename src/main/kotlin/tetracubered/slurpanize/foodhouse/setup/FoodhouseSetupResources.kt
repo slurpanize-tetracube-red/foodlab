@@ -15,7 +15,6 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
-
 @Tags(
     value = [
         Tag(
@@ -47,11 +46,9 @@ class FoodhouseSetupResources(
     @GET
     @Path("/status")
     @Produces(MediaType.APPLICATION_JSON)
-    suspend fun setupStatus(): Response {
-        val databaseName = ConfigProvider.getConfig().getValue("quarkus.datasource.password", String::class.java)
-        return Response.ok(
+    suspend fun setupStatus(): Response =
+        Response.ok(
             this.foodhouseSetupServices.getSetupStatus()
         )
             .build()
-    }
 }
