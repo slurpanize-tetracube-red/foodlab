@@ -1,7 +1,9 @@
 quarkus:
   http:
+    cors: true
     port: 8081
     test-port: 8082
+    host: 0.0.0.0
   application:
     name: Foodhouse service
     version: ${FOODHOUSE_VERSION}
@@ -14,7 +16,8 @@ quarkus:
     reactive:
       url: postgresql://${DB_HOST}:5432/slurpanize_db
       max-size: 20
-
+  log:
+    level: DEBUG
 # => OpenAPI settings
 mp:
   openapi:
@@ -24,8 +27,3 @@ mp:
           title: Foodhouse service
           version: ${FOODHOUSE_VERSION}
           description: Set of services to serve and store Foodhouse (aka Merchant, Restoraunt, Food truck) information data
-
-"%dev":
-  quarkus:
-    http:
-      cors: true

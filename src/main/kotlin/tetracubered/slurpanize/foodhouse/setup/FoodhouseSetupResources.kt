@@ -1,17 +1,17 @@
 package tetracubered.slurpanize.foodhouse.setup
 
-import org.eclipse.microprofile.config.ConfigProvider
 import org.eclipse.microprofile.openapi.annotations.Operation
 import org.eclipse.microprofile.openapi.annotations.media.Content
 import org.eclipse.microprofile.openapi.annotations.media.Schema
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses
 import org.eclipse.microprofile.openapi.annotations.tags.Tag
 import org.eclipse.microprofile.openapi.annotations.tags.Tags
+import tetracubered.slurpanize.foodhouse.setup.payloads.FoodhouseCreateRequest
 import tetracubered.slurpanize.foodhouse.setup.payloads.SetupStatusResponse
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import javax.validation.Valid
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
@@ -51,4 +51,19 @@ class FoodhouseSetupResources(
             this.foodhouseSetupServices.getSetupStatus()
         )
             .build()
+
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    suspend fun create(@Valid @RequestBody foodhouseCreateRequest: FoodhouseCreateRequest): Response {
+        val createFoodhouseResult = this.foodhouseSetupServices.createFoodhouse(foodhouseCreateRequest)
+        if (createFoodhouseResult.isFailure) {
+            throw createFoodhouseResult.exceptionOrNull()!!
+        }
+        return Response.ok(
+            createFoodhouseResult.getOrNull()
+        )
+            .build()
+    }
 }
