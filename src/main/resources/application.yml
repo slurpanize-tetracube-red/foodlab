@@ -1,9 +1,12 @@
 quarkus:
   http:
+    proxy:
+      enable-forwarded-prefix: true
     cors: true
     port: 8081
     test-port: 8082
     host: 0.0.0.0
+    root-path: /foodhouse-api
   application:
     name: Foodhouse service
     version: ${FOODHOUSE_VERSION}
