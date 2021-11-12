@@ -27,11 +27,12 @@ class FoodhouseRepository(
         return foodhouse
     }
 
-    suspend fun save(foodhouse: Foodhouse) {
+    suspend fun save(foodhouse: Foodhouse): Foodhouse {
         val dbFoodhouse = foodhouse.copy(id = UUID.randomUUID())
         val rxSession = this.rxSessionFactory.openSession().awaitSuspending()
         rxSession.merge(dbFoodhouse).awaitSuspending()
         rxSession.flush().awaitSuspending()
         rxSession.close().awaitSuspending()
+        return dbFoodhouse
     }
 }

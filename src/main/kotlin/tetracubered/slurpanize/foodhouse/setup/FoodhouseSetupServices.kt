@@ -18,7 +18,7 @@ class FoodhouseSetupServices(
         return SetupStatusResponse(exists)
     }
 
-    suspend fun createFoodhouse(foodhouseCreateRequest: FoodhouseCreateRequest): Result<SetupStatusResponse> {
+    suspend fun createFoodhouse(foodhouseCreateRequest: FoodhouseCreateRequest): Result<Foodhouse> {
         val exists = this.foodhouseRepository.findAnyFoodhouse() != null
         if (exists) {
             return Result.failure(
@@ -33,7 +33,7 @@ class FoodhouseSetupServices(
             name = foodhouseCreateRequest.name,
             description = foodhouseCreateRequest.description
         )
-        this.foodhouseRepository.save(foodhouse)
-        return Result.success(SetupStatusResponse(setupCompleted = true))
+        val createdFoodhouse = this.foodhouseRepository.save(foodhouse)
+        return Result.success(createdFoodhouse)
     }
 }

@@ -8,6 +8,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses
 import org.eclipse.microprofile.openapi.annotations.tags.Tag
 import org.eclipse.microprofile.openapi.annotations.tags.Tags
+import tetracubered.slurpanize.foodhouse.setup.payloads.FoodhouseCreateResponse
 import tetracubered.slurpanize.foodhouse.setup.payloads.FoodhouseCreateRequest
 import tetracubered.slurpanize.foodhouse.setup.payloads.SetupStatusResponse
 import javax.validation.Valid
@@ -61,8 +62,13 @@ class FoodhouseSetupResources(
         if (createFoodhouseResult.isFailure) {
             throw createFoodhouseResult.exceptionOrNull()!!
         }
+
+        val createdFoodhouse = createFoodhouseResult.getOrNull()!!
         return Response.ok(
-            createFoodhouseResult.getOrNull()
+            FoodhouseCreateResponse(
+                createdFoodhouse.id!!,
+                createdFoodhouse.name!!
+            )
         )
             .build()
     }
