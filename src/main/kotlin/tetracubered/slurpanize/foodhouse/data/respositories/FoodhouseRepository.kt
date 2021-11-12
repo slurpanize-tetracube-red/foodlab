@@ -1,8 +1,8 @@
-package tetracubered.slurpanize.foodhouse.setup.data.respositories
+package tetracubered.slurpanize.foodhouse.data.respositories
 
 import io.smallrye.mutiny.coroutines.awaitSuspending
 import org.hibernate.reactive.mutiny.Mutiny
-import tetracubered.slurpanize.foodhouse.setup.data.entities.Foodhouse
+import tetracubered.slurpanize.foodhouse.data.entities.Foodhouse
 import java.util.*
 import javax.enterprise.context.ApplicationScoped
 

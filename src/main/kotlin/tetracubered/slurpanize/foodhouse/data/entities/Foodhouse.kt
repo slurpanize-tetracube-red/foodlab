@@ -1,4 +1,4 @@
-package tetracubered.slurpanize.foodhouse.setup.data.entities
+package tetracubered.slurpanize.foodhouse.data.entities
 
 import java.util.*
 import javax.persistence.Column

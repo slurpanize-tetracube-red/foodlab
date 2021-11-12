@@ -11,7 +11,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
-import tetracubered.slurpanize.foodhouse.setup.data.respositories.FoodhouseRepository
+import tetracubered.slurpanize.foodhouse.data.respositories.FoodhouseRepository
 import tetracubered.slurpanize.foodhouse.setup.payloads.FoodhouseCreateRequest
 
 @QuarkusTest

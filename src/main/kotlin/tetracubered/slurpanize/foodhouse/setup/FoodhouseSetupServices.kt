@@ -1,8 +1,8 @@
 package tetracubered.slurpanize.foodhouse.setup
 
 import io.netty.handler.codec.http.HttpResponseStatus
-import tetracubered.slurpanize.foodhouse.setup.data.entities.Foodhouse
-import tetracubered.slurpanize.foodhouse.setup.data.respositories.FoodhouseRepository
+import tetracubered.slurpanize.foodhouse.data.entities.Foodhouse
+import tetracubered.slurpanize.foodhouse.data.respositories.FoodhouseRepository
 import tetracubered.slurpanize.foodhouse.setup.payloads.FoodhouseCreateRequest
 import tetracubered.slurpanize.foodhouse.setup.payloads.SetupStatusResponse
 import javax.enterprise.context.ApplicationScoped

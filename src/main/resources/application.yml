@@ -17,7 +17,8 @@ quarkus:
       url: postgresql://${DB_HOST}:5432/slurpanize_db
       max-size: 20
   log:
-    level: DEBUG
+    level: INFO
+    
 # => OpenAPI settings
 mp:
   openapi:

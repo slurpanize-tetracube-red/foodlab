@@ -12,7 +12,7 @@ import kotlinx.coroutines.async
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
-import tetracubered.slurpanize.foodhouse.setup.data.respositories.FoodhouseRepository
+import tetracubered.slurpanize.foodhouse.data.respositories.FoodhouseRepository
 import tetracubered.slurpanize.foodhouse.setup.payloads.SetupStatusResponse
 
 @QuarkusTest
