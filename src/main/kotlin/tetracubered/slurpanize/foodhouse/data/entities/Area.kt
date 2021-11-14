@@ -12,6 +12,6 @@ data class Area(
     val id: UUID? = null,
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     val name: FoodhouseAreas? = null
 )
